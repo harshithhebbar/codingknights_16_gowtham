@@ -1,0 +1,86 @@
+<!-- custom-reports.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Reports</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-image: url('https://static.vecteezy.com/system/resources/thumbnails/006/937/544/small/multicolored-abstract-textured-grunge-background-template-vector.jpg'); /* Replace 'your-background-image-url.jpg' with the actual image URL */
+      background-size: cover;
+    }
+
+    h1 {
+      color: #f13131;
+    }
+
+    .report-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .text-box {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .submit-button {
+      padding: 15px;
+      background-color: #e83229;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Custom Reports</h1>
+
+  <div class="report-container">
+    <label for="reportTitle">Report Title:</label>
+    <input type="text" id="reportTitle" class="text-box" placeholder="Enter report title">
+
+    <label for="reportDescription">Report Description:</label>
+    <textarea id="reportDescription" class="text-box" placeholder="Enter report description"></textarea>
+
+    <label for="reportContent">Report Content:</label>
+    <textarea id="reportContent" class="text-box" placeholder="Enter report content"></textarea>
+
+    <button class="submit-button" onclick="submitReport()">Submit Report</button>
+  </div>
+
+  <script>
+    function submitReport() {
+      const title = document.getElementById('reportTitle').value;
+      const description = document.getElementById('reportDescription').value;
+      const content = document.getElementById('reportContent').value;
+
+      // You can perform further actions with the entered data, e.g., send it to a server
+      alert(`Report submitted!\nTitle: ${title}\nDescription: ${description}\nContent: ${content}`);
+    }
+  </script>
+</body>
+</html>

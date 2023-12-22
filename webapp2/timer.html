@@ -1,0 +1,216 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Project Management Web App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+      margin: auto;
+    }
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <button onclick="showTimerForm()">Timer and Timesheets</button>
+  </div>
+
+  <div id="timerForm" style="display: none;">
+    <form>
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" required>
+
+      <label for="activity">Activity:</label>
+      <input type="text" id="activity" name="activity" placeholder="Enter your activity" required>
+
+      <button type="button" onclick="submitTimerForm()">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function showTimerForm() {
+      document.getElementById('timerForm').style.display = 'block';
+    }
+
+    function submitTimerForm() {
+      const time = document.getElementById('time').value;
+      const activity = document.getElementById('activity').value;
+
+      // Replace this with your logic to handle the submitted data
+      alert(`Time: ${time}, Activity: ${activity}`);
+
+      // You can also add logic to hide the form after submission
+      document.getElementById('timerForm').style.display = 'none';
+    }
+  </script>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Project Management Web App</title>
+  <style>
+    body {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      text-align: center;
+      background-color: #ffe5b4; /* Light Orange Background */
+      padding: 190px;
+      margin: 50px;
+      background-image: url(https://www.alucoildesign.com/assets/app/media/img/bg/bg-1.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+      margin: auto;
+      margin-top: 50px; /* Adjust as needed */
+    }
+
+    label {
+      margin-bottom: 5px;
+      color: beige;
+      font-size: 20px;
+    }
+
+    input {
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #aef59b;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #activityContainer {
+      margin-top: 30px; /* Corrected margin value */
+      text-align: left;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    /* Center checkbox and activity text */
+    .activity-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    .activity-item label {
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="timerForm">
+    <form>
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" required>
+
+      <label for="activity">Activity:</label>
+      <input type="text" id="activity" name="activity" placeholder="Enter your activity" required>
+
+      <button type="button" onclick="submitTimerForm()">Submit</button>
+    </form>
+  </div>
+
+  <div id="activityContainer"></div>
+
+  <script>
+    function submitTimerForm() {
+      const timeInput = document.getElementById('time');
+      const activityInput = document.getElementById('activity');
+      const time = timeInput.value;
+      const activity = activityInput.value;
+      const period = getPeriod(time);
+
+      // Create activity element with checkbox
+      const activityContainer = document.getElementById('activityContainer');
+      const activityItem = document.createElement('div');
+      activityItem.classList.add('activity-item');
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id = `activityCheckbox_${Date.now()}`; // Corrected syntax for id string
+      checkbox.addEventListener('change', () => toggleActivityCompletion(activityItem, checkbox));
+
+      const label = document.createElement('label');
+      label.htmlFor = checkbox.id;
+      label.textContent = `Time: ${time} ${period}, Activity: ${activity}`; // Corrected syntax for label string
+
+      activityItem.appendChild(checkbox);
+      activityItem.appendChild(label);
+      activityContainer.appendChild(activityItem);
+
+      // Clear form inputs
+      timeInput.value = '';
+      activityInput.value = '';
+    }
+
+    function getPeriod(time) {
+      const hours = parseInt(time.split(':')[0]);
+      return hours >= 12 ? 'PM' : 'AM';
+    }
+
+    function toggleActivityCompletion(activityItem, checkbox) {
+      const label = activityItem.querySelector('label');
+      if (checkbox.checked) {
+        label.classList.add('completed');
+      } else {
+        label.classList.remove('completed');
+      }
+    }
+  </script>
+</body>
+</html>
+
+

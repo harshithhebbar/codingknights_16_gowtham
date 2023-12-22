@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Screen</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div>
+
+        <div id="body1">
+          <img src="bgbgbg_prev_ui.png" id="logo">
+        </div>
+      </div>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form>
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+      <div class="button-container">
+        <button type="button" onclick="login()">Login</button>
+        <button type="button" onclick="showForgotPassword()">Forgot Password</button>
+        <button type="button" onclick="register()">Register</button>
+      </div>
+    </form>
+
+    <!-- Forgot Password Form (Initially hidden) -->
+    <div id="forgotPasswordForm" style="display: none;">
+      <h2>Forgot Password</h2>
+      <form onsubmit="return updatePassword()">
+        <div class="input-group">
+          <label for="newPassword">New Password</label>
+          <input type="password" id="newPassword" name="newPassword" placeholder="Enter your new password" required>
+        </div>
+        <button type="submit">Update Password</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Check if fields are empty
+      if (!username || !password) {
+        alert('Please enter both username and password.');
+        return; // Stop further execution
+      }
+
+      // Add logic for login (e.g., send request to server)
+
+      // Redirect to login.html
+      window.location.href = 'loading.html';
+    }
+
+    function showForgotPassword() {
+      document.getElementById('forgotPasswordForm').style.display = 'block';
+    }
+
+    function updatePassword() {
+      const newPassword = document.getElementById('newPassword').value;
+
+      // Check if the new password field is empty
+      if (!newPassword) {
+        alert('Please enter a new password.');
+        return false; // Prevent form submission
+      }
+
+      // Add logic to update the password (e.g., send request to server)
+
+      // Reset form and hide the forgot password form
+      document.getElementById('newPassword').value = '';
+      document.getElementById('forgotPasswordForm').style.display = 'none';
+
+      // Optionally, you can redirect the user to the login page or perform other actions
+      return false; // Prevent form submission for this example
+    }
+
+    function register() {
+      // Add logic for registration (e.g., navigate to registration page)
+      alert('Register button clicked!');
+      window.location.href = 'register.html';
+      // Redirect to registration page if needed
+      // window.location.href = 'register.html';
+    }
+  </script>
+</body>
+</html>
+
